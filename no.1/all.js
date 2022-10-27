@@ -84,4 +84,4 @@ showHistoryData()
 // printBmi(178,130)
 // printBmi()
 
-
+console.log(bmiHistoryData);

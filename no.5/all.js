@@ -1,4 +1,4 @@
-//bmiState變數
+//變數
 const bmiStatesData = {
     "overThin": {
       "state": "過輕",
@@ -23,74 +23,77 @@ const bmiStatesData = {
     "severeFat": {
       "state": "重度肥胖",
       "color": "綠色"
-    }
-  }
-//查詢歷史
-let bmiHistoryData = [];
-
-function bmiTxtMaker(state){
-    console.log(`您的體重${bmiStatesData[state].state}，健康指數為${bmiStatesData[state].color}`);
+    },
 }
+//歷史 存bmi,state(overthin)
+let bmiHistoryData = []
 
-function saveHistoryData(bmi,state){
-    let obj ={};
-    obj.state = bmiStatesData[state].state
-    obj.color = bmiStatesData[state].color
+//3 
+function addData(bmi,state){
+    let obj = {};
     obj.bmi = bmi;
-    bmiHistoryData.push(obj)
+    obj.state = state;
+    bmiHistoryData.push(obj);
 }
 
+//4 
+function showHistoryData(){
+    let lastNum = bmiHistoryData.length-1;
+    let lastState = bmiHistoryData[lastNum].state;``
+
+    console.log(`「您總共計算 ${bmiHistoryData.length} 次 BMI 紀錄，最後一次 BMI 指數為 ${bmiHistoryData[lastNum].bmi}，體重${bmiStatesData[lastState].state}！健康指數為${bmiStatesData[lastState].color}！」`);
+}
+
+//2 
+function bmiTxtMaker(state){
+    console.log(`您的體重${bmiStatesData[state].state}`);
+}
+
+//overThin,normal,overWeight,mildFat,moderateFat,severeFat
+//1
 function printBmi(height,weight){
-    let bmi  = (weight / (height/100)**2).toFixed(2)
-    
+    let bmi = (weight / (height/100)**2).toFixed(2);
     if(bmi<18.5){
-        saveHistoryData(bmi,'overThin')
+        addData(bmi,'overThin')
         bmiTxtMaker('overThin')
-    }else if(18.5<=bmi && bmi<24 ){
-        saveHistoryData(bmi,'normal')
+    }else if(bmi>=18.5 && bmi<24){
+        addData(bmi,'normal')
         bmiTxtMaker('normal')
-    }else if(24<=bmi && bmi<27 ){
-        saveHistoryData(bmi,'overWeight')
+    }else if(bmi>=24 && bmi<27){
+        addData(bmi,'overWeight')
         bmiTxtMaker('overWeight')
-    }else if(27<=bmi && bmi<30 ){
-        saveHistoryData(bmi,'mildFat')
+    }else if(bmi>=27 && bmi<30){
+        addData(bmi,'mildFat')
         bmiTxtMaker('mildFat')
-    }else if(30<=bmi && bmi<35 ){
-        saveHistoryData(bmi,'moderateFat')
+    }else if(bmi>=30 && bmi<35){
+        addData(bmi,'moderateFat')
         bmiTxtMaker('moderateFat')
-    }else if(bmi>35){
-        saveHistoryData(bmi,'severeFat')
+    }else if(bmi>=35){
+        addData(bmi,'severeFat')
         bmiTxtMaker('severeFat')
-    }else{
-        console.log('您的數值輸入錯誤，請重新輸入');
     }
-}
-
-function printLastData(){
-    let lastNum = bmiHistoryData.length
-    console.log(`您總共計算${lastNum}次，最後一次bmi指數為${bmiHistoryData[lastNum-1].bmi}，體重${bmiHistoryData[lastNum-1].state}，健康指數為${bmiHistoryData[lastNum-1].color}`);
 }
 
 
 printBmi(178, 20)
 printBmi(178, 70)
 printBmi(178, 85)
-printLastData()
+showHistoryData()
 printBmi(178, 90)
 printBmi(178, 110)
 printBmi(178, 130)
 printBmi()
-printLastData()
+showHistoryData()
 
-// console.log(bmiHistoryData);
 
 
 // **第一階段：請寫 printBmi 函式，並印出對應狀態**
+// bmi<18.5
 // 18.5<=bmi && bmi<24
 // 24<=bmi && bmi<27
 // 27<=bmi && bmi<30
 // 30<=bmi && bmi<35
-// bmi>35
+// bmi>=35
 
 // printBmi(178, 20)
 // printBmi(178, 70)
