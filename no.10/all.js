@@ -1,44 +1,44 @@
+//錄影,現在時間
 //變數
 const bmiStatesData = {
     "overThin": {
-        "state": "過輕",
-        "color": "藍色"
+      "state": "過輕",
+      "color": "藍色"
     },
     "normal": {
-        "state": "正常",
-        "color": "紅色"
+      "state": "正常",
+      "color": "紅色"
     },
     "overWeight": {
-        "state": "過重",
-        "color": "澄色"
+      "state": "過重",
+      "color": "澄色"
     },
     "mildFat": {
-        "state": "輕度肥胖",
-        "color": "黃色"
+      "state": "輕度肥胖",
+      "color": "黃色"
     },
     "moderateFat": {
-        "state": "中度肥胖",
-        "color": "黑色"
+      "state": "中度肥胖",
+      "color": "黑色"
     },
     "severeFat": {
-        "state": "重度肥胖",
-        "color": "綠色"
+      "state": "重度肥胖",
+      "color": "綠色"
     },
 }
 
-//歷史 存bmi over
+//歷史 存bmi,state over
 let bmiHistoryData = [];
 
 //4
 function showHistoryData(){
     let lastNum = bmiHistoryData.length-1;
-    let lastState = bmiHistoryData[lastNum].state
+    let lastState= bmiHistoryData[lastNum].state
 
-    console.log(`「您總共計算 ${bmiHistoryData.length} 次 BMI 紀錄，最後一次 BMI 指數為 ${bmiHistoryData[lastNum].bmi}，體重${bmiStatesData[lastState].state}！健康指數為${bmiStatesData[lastState].color}！」`);    
+    console.log(`「您總共計算 ${bmiHistoryData.length} 次 BMI 紀錄，最後一次 BMI 指數為 ${bmiHistoryData[lastNum].bmi}，體重${bmiStatesData[lastState].state}！健康指數為${bmiStatesData[lastState].color}！」`);
 }
 
-//3
-
+//3 
 function addData(bmi,state){
     let obj = {};
     obj.bmi = bmi;
@@ -50,7 +50,6 @@ function addData(bmi,state){
 function bmiTxtMaker(state){
     console.log(`您的體重${bmiStatesData[state].state}，健康指數為${bmiStatesData[state].color}`);
 }
-
 //1
 //overThin,normal,overWeight,mildFat,moderateFat,severeFat
 function printBmi(height,weight){
@@ -90,7 +89,6 @@ showHistoryData()
 
 
 console.log(bmiHistoryData);
-
 // **第一階段：請寫 printBmi 函式，並印出對應狀態**
 // bmi<18.5
 // 18.5<=bmi && bmi<24
